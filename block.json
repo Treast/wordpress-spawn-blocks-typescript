@@ -1,0 +1,16 @@
+{
+	"apiVersion": 2,
+	"name": "create-block/spawn-blocks",
+	"version": "0.1.0",
+	"title": "Spawn Blocks",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "spawn-blocks",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}

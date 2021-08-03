@@ -1,46 +1,68 @@
-import React from 'react';
-//@ts-ignore
-import {RichText, useBlockProps} from '@wordpress/block-editor';
-import {BlockConfiguration} from '@wordpress/blocks';
+import * as React from 'react';
+// @ts-ignore
+import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { BlockConfiguration, BlockEditProps } from '@wordpress/blocks';
 
 import './style.scss';
 import './editor.scss';
 
-const edit = (props: any) => {
-  const {attributes, setAttributes} = props;
+interface IHelloWorldProps {
+  content: string;
+  title: string;
+}
+
+const edit = (props: BlockEditProps<IHelloWorldProps>) => {
+  const { attributes, setAttributes } = props;
+
   const blockProps = useBlockProps();
 
-  const set = (key: string, val: string) => {
-    setAttributes({key: val});
+  const setContent = (content: string) => {
+    console.log('BlockProps', blockProps);
+    setAttributes({ content });
+  };
+
+  const setTitle = (title: string) => {
+    setAttributes({ title });
   };
 
   return (
     <div {...blockProps}>
-      <RichText tagName="p" value={attributes.content} onChange={p => set('content', p)} />
+      <RichText tagName="h2" value={attributes.title} onChange={p => setTitle(p)} className="title" />
+      <RichText tagName="p" value={attributes.content} onChange={p => setContent(p)} className="content" />
     </div>
   );
 };
 
 const save = (props: any) => {
-  const {attributes} = props;
+  const { attributes } = props;
+
   const blockProps = useBlockProps.save();
 
   return (
     <div {...blockProps}>
-      <RichText.Content tagName="p" value={attributes.content} />
+      <RichText.Content tagName="h2" value={attributes.title} className="title" />
+      <RichText.Content tagName="p" value={attributes.content} className="content" />
     </div>
   );
 };
 
-const blockSettings: BlockConfiguration = {
-  title: 'Hello World',
+const blockSettings: BlockConfiguration<IHelloWorldProps> = {
+  //@ts-ignore
+  apiVersion: 2,
+  title: 'Hello World 4',
   description: 'An example of Gutenberg block using SpawnBlocks',
   category: 'text',
   icon: 'yes-alt',
   attributes: {
     content: {
       type: 'string',
-      select: '.content'
+      source: 'html',
+      selector: '.content'
+    },
+    title: {
+      type: 'string',
+      source: 'text',
+      selector: '.title'
     }
   },
   edit,

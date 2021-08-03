@@ -1,9 +1,5 @@
 import {registerBlockType} from '@wordpress/blocks';
 
-import helloWorldBlock from './blocks/block-hello-world';
+import blockHelloWorld from './blocks/block-hello-world';
 
-registerBlockType('spawn-blocks/helloworld', helloWorldBlock);
-
-console.log('=======================');
-console.log('Spawn blocks loaded !');
-console.log('=======================');
+registerBlockType('spawn-blocks/helloworld', blockHelloWorld);

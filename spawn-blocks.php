@@ -21,6 +21,5 @@ use Spawn\Blocks;
 
 $blocks = new Blocks();
 $blocks->add_block('spawn-blocks/helloworld');
-// $blocks->add_block('spawn/hello-world-2');
 
 $blocks->init();

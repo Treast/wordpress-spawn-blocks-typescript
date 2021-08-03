@@ -11,24 +11,21 @@ class Blocks {
     public function __construct() {}
 
     public function init() {
-        add_action('init', array($this, 'import_files'));
-        // add_action('enqueue_block_assets', array($this, 'register_blocks'));
+        add_action('enqueue_block_assets', array($this, 'import_assets'));
+        add_action('enqueue_block_editor_assets', array($this, 'import_editor_assets'));
     }
 
-    public function import_files() {
-        // var_dump(plugins_url('../build/index.css', __FILE__));
-        // var_dump( plugin_dir_path( __FILE__ ) . '../build/index.js');die;
-        $asset = include(__DIR__ . '/../build/index.asset.php');
+    public function import_editor_assets() {
+        $asset = include(__DIR__ . '/../build/main.asset.php');
 
-        wp_enqueue_script('spawn-blocks-editor', $this->getFileUrl('/../build/index.js'),  $asset['dependencies'], $asset['version']);
-        wp_enqueue_style('spawn-blocks-editor', $this->getFileUrl('/../build/main.css'), array(), filemtime(__DIR__ . '/../build/main.css'));
-        wp_enqueue_style('spawn-blocks-styles', $this->getFileUrl('/../build/style-main.css'), array(), filemtime(__DIR__ . '/../build/style-main.css'));
-
-        // wp_enqueue_script('spawn-blocks-editor');
-        // wp_enqueue_style('spawn-blocks-editor');
-        // wp_enqueue_style('spawn-blocks-styles');
-
+        wp_enqueue_script('spawn-blocks-editor', $this->getFileUrl('/../build/main.js'),  $asset['dependencies'], $asset['version']);
+        wp_enqueue_style('spawn-blocks-editor', $this->getFileUrl('/../build/main.css'), array('wp-edit-blocks'), filemtime(__DIR__ . '/../build/main.css'));
+        
         $this->register_blocks();
+    }
+
+    public function import_assets() {
+        wp_enqueue_style('spawn-blocks-styles', $this->getFileUrl('/../build/style-main.css'), array(), filemtime(__DIR__ . '/../build/style-main.css'));
     }
 
     private function getFileUrl(string $file) {

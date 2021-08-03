@@ -13,14 +13,14 @@
  * @package           create-block
  */
 
-/**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
- */
-function create_block_spawn_blocks_block_init() {
-	register_block_type( __DIR__ );
-}
-add_action( 'init', 'create_block_spawn_blocks_block_init' );
+defined( 'ABSPATH' ) || exit;
+
+require_once __DIR__ . '/app/Blocks.php';
+
+use Spawn\Blocks;
+
+$blocks = new Blocks();
+$blocks->add_block('spawn-blocks/helloworld');
+// $blocks->add_block('spawn/hello-world-2');
+
+$blocks->init();

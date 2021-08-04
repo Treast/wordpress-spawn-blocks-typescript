@@ -1,5 +1,8 @@
-import {registerBlockType} from '@wordpress/blocks';
+import { registerBlockType } from '@wordpress/blocks';
 
-import blockHelloWorld from './blocks/block-hello-world';
+import './global.scss';
 
-registerBlockType('spawn-blocks/helloworld', blockHelloWorld);
+// import blockHelloWorld from './blocks/block-hello-world';
+import blockSectionContent from './blocks/block-section-content';
+
+registerBlockType('spawn-blocks/section-content', blockSectionContent);

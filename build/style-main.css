@@ -1,1 +1,41 @@
-.wp-block-spawn-blocks-helloworld h2{font-size:36px}
+:root {
+  --container-padding: 20px;
+  --container-width: calc(100% - var(--container-padding) * 2);
+}
+
+.container, .wp-block-spawn-blocks-section-content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[12];
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  row-gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  padding-left: calc(50% - var(--container-width) / 2);
+  padding-right: calc(50% - var(--container-width) / 2);
+}
+
+@media only screen and (min-width: 1168px) {
+  :root {
+    --container-width: 1128px;
+  }
+}
+.wp-block-spawn-blocks-section-content .col-image {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-column: 2/5;
+}
+.wp-block-spawn-blocks-section-content .col-image .wp-block-image img {
+  height: auto;
+}
+.wp-block-spawn-blocks-section-content .col-content {
+  -ms-grid-column: 6;
+  -ms-grid-column-span: 6;
+  grid-column: 6/12;
+}
+.wp-block-spawn-blocks-section-content.background {
+  background: rgba(255, 0, 0, 0.3);
+}
+
+/*# sourceMappingURL=style-main.css.map*/

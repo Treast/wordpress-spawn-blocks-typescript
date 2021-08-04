@@ -1,0 +1,23 @@
+@import '../../common';
+
+.wp-block-spawn-blocks-section-content {
+  @extend .container;
+
+  .col-image {
+    grid-column: 2 / 5;
+
+    .wp-block-image {
+      img {
+        height: auto;
+      }
+    }
+  }
+
+  .col-content {
+    grid-column: 6 / 12;
+  }
+
+  &.background {
+    background: rgba(#f00, 0.3);
+  }
+}

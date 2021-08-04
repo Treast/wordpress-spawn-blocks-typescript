@@ -1,0 +1,26 @@
+$maxWidthContainer: 1128px;
+$containerPadding: 20px;
+$gridGap: 24px;
+
+:root {
+  --container-padding: #{$containerPadding};
+  --container-width: calc(100% - var(--container-padding) * 2);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: $gridGap;
+  row-gap: $gridGap;
+
+  width: 100%;
+  max-width: 100%;
+  padding-left: calc(50% - var(--container-width) / 2);
+  padding-right: calc(50% - var(--container-width) / 2);
+}
+
+@media only screen and (min-width: (#{$maxWidthContainer + 2 * $containerPadding })) {
+  :root {
+    --container-width: #{$maxWidthContainer};
+  }
+}

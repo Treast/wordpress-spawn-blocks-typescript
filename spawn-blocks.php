@@ -20,6 +20,6 @@ require_once __DIR__ . '/app/Blocks.php';
 use Spawn\Blocks;
 
 $blocks = new Blocks();
-$blocks->add_block('spawn-blocks/helloworld');
+$blocks->add_block('spawn-blocks/section-content');
 
 $blocks->init();

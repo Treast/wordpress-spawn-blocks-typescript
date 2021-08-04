@@ -1,7 +1,6 @@
 import * as React from 'react';
-// @ts-ignore
 import { RichText, useBlockProps } from '@wordpress/block-editor';
-import { BlockConfiguration, BlockEditProps } from '@wordpress/blocks';
+import { BlockEditProps, IBlockConfiguration } from '@wordpress/blocks';
 
 import './style.scss';
 import './editor.scss';
@@ -46,8 +45,7 @@ const save = (props: any) => {
   );
 };
 
-const blockSettings: BlockConfiguration<IHelloWorldProps> = {
-  //@ts-ignore
+const blockSettings: IBlockConfiguration<IHelloWorldProps> = {
   apiVersion: 2,
   title: 'Hello World 4',
   description: 'An example of Gutenberg block using SpawnBlocks',

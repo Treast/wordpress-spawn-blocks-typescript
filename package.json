@@ -21,6 +21,7 @@
   "devDependencies": {
     "@types/wordpress__block-editor": "^6.0.3",
     "@types/wordpress__blocks": "^9.0.2",
+    "@types/wordpress__data": "^4.6.10",
     "@wordpress/scripts": "^17.1.0",
     "ts-loader": "^7.0.5",
     "typescript": "^4.3.5"

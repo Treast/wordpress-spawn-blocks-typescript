@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { InnerBlocks, useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import {
+  InnerBlocks,
+  useBlockProps,
+  InspectorControls,
+  __experimentalUseInnerBlocksProps as useInnerBlocksProps
+} from '@wordpress/block-editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
 import { BlockEditProps, IBlockConfiguration, TemplateArray } from '@wordpress/blocks';
 import cx from 'classnames';
@@ -15,7 +20,9 @@ const edit = (props: BlockEditProps<ISectionContentProps>) => {
   const { attributes, setAttributes } = props;
   const { background } = attributes;
 
-  const blockProps = useBlockProps();
+  const blockProps = useBlockProps({
+    className: cx({ background })
+  });
 
   const innerBlocksLayout: TemplateArray = [
     ['core/group', { className: 'col-image' }, [['core/image', {}]]],
@@ -35,6 +42,11 @@ const edit = (props: BlockEditProps<ISectionContentProps>) => {
     ]
   ];
 
+  const innerBlocksProps = useInnerBlocksProps(blockProps, {
+    template: innerBlocksLayout,
+    templateLock: 'all'
+  });
+
   return (
     <>
       <InspectorControls>
@@ -48,9 +60,7 @@ const edit = (props: BlockEditProps<ISectionContentProps>) => {
         </PanelBody>
       </InspectorControls>
 
-      <div {...blockProps} className={cx({ background }, blockProps.className)}>
-        <InnerBlocks template={innerBlocksLayout} templateLock="all" />
-      </div>
+      <div {...innerBlocksProps}></div>
     </>
   );
 };
@@ -59,10 +69,12 @@ const save = (props: BlockEditProps<ISectionContentProps>) => {
   const { attributes } = props;
   const { background } = attributes;
 
-  const blockProps = useBlockProps.save();
+  const blockProps = useBlockProps.save({
+    className: cx({ background })
+  });
 
   return (
-    <div {...blockProps} className={cx({ background }, blockProps.className)}>
+    <div {...blockProps}>
       <InnerBlocks.Content />
     </div>
   );

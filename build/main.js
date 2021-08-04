@@ -285,7 +285,9 @@ __webpack_require__(/*! ./editor.scss */ "./src/blocks/block-section-content/edi
 var edit = function (props) {
     var attributes = props.attributes, setAttributes = props.setAttributes;
     var background = attributes.background;
-    var blockProps = block_editor_1.useBlockProps();
+    var blockProps = block_editor_1.useBlockProps({
+        className: classnames_1.default({ background: background })
+    });
     var innerBlocksLayout = [
         ['core/group', { className: 'col-image' }, [['core/image', {}]]],
         [
@@ -302,18 +304,23 @@ var edit = function (props) {
             ]
         ]
     ];
+    var innerBlocksProps = block_editor_1.__experimentalUseInnerBlocksProps(blockProps, {
+        template: innerBlocksLayout,
+        templateLock: 'all'
+    });
     return (React.createElement(React.Fragment, null,
         React.createElement(block_editor_1.InspectorControls, null,
             React.createElement(components_1.PanelBody, { title: "Options" },
                 React.createElement(components_1.ToggleControl, { onChange: function () { return setAttributes({ background: !background }); }, label: "Fond color\u00E9", help: "Mettre un fond color\u00E9 sur la section ?", checked: background }))),
-        React.createElement("div", __assign({}, blockProps, { className: classnames_1.default({ background: background }, blockProps.className) }),
-            React.createElement(block_editor_1.InnerBlocks, { template: innerBlocksLayout, templateLock: "all" }))));
+        React.createElement("div", __assign({}, innerBlocksProps))));
 };
 var save = function (props) {
     var attributes = props.attributes;
     var background = attributes.background;
-    var blockProps = block_editor_1.useBlockProps.save();
-    return (React.createElement("div", __assign({}, blockProps, { className: classnames_1.default({ background: background }, blockProps.className) }),
+    var blockProps = block_editor_1.useBlockProps.save({
+        className: classnames_1.default({ background: background })
+    });
+    return (React.createElement("div", __assign({}, blockProps),
         React.createElement(block_editor_1.InnerBlocks.Content, null)));
 };
 var blockSettings = {

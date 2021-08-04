@@ -9,9 +9,13 @@ declare module '@wordpress/blocks' {
 
 declare module '@wordpress/block-editor' {
   interface IUseBlockProps {
-    (): any;
-    save(): any;
+    // @ts-ignore
+    (props: any = {}): any;
+    // @ts-ignore
+    save(props: any = {}): any;
   }
+
+  const __experimentalUseInnerBlocksProps: any;
 
   const useBlockProps: IUseBlockProps;
 }

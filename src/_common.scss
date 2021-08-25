@@ -1,8 +1,6 @@
-$maxWidthContainer: 1128px;
-$containerPadding: 20px;
-$gridGap: 24px;
+@import './variables';
 
-:root {
+:root  {
   --container-padding: #{$containerPadding};
   --container-width: calc(100% - var(--container-padding) * 2);
 }

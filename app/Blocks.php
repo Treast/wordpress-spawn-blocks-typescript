@@ -20,7 +20,7 @@ class Blocks {
 
         wp_enqueue_script('spawn-blocks-editor', $this->getFileUrl('/../build/main.js'),  $asset['dependencies'], $asset['version']);
         wp_enqueue_style('spawn-blocks-editor', $this->getFileUrl('/../build/main.css'), array('wp-edit-blocks'), filemtime(__DIR__ . '/../build/main.css'));
-        
+
         $this->register_blocks();
     }
 
@@ -41,6 +41,14 @@ class Blocks {
         $block = new Block($name);
         $this->blocks[] = $block;
     }
+
+	public function add_style($block, $options) {
+		register_block_style($block, $options);
+	}
+
+	public function remove_style($block, $style) {
+		unregister_block_style($block, $style);
+	}
 
     public function register_blocks() {
         foreach($this->blocks as $block) {

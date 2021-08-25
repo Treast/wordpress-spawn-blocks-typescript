@@ -1,3 +1,5 @@
+@import './variables';
+
 html,
 body {
   height: 100%;
@@ -10,6 +12,6 @@ body {
   box-sizing: border-box;
 }
 
-// .editor-styles-wrapper .wp-block {
-//   max-width: none;
-// }
+body .editor-styles-wrapper {
+  padding: 0;
+}

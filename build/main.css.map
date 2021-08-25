@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/global.scss"],"names":[],"mappings":"AAAA;;EAEE;EACA;AACF;;AAEA;EACE;EACA;EACA;AACF,C","file":"main.css","sourcesContent":["html,\nbody {\n  height: 100%;\n  width: 100%;\n}\n\n* {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\n\n// .editor-styles-wrapper .wp-block {\n//   max-width: none;\n// }\n"],"sourceRoot":""}
